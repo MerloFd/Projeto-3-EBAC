@@ -46,7 +46,7 @@ public abstract class GenericDAO <T extends Persistente> implements IGenericDAO<
     private String getSqlInsertProduto() {
         StringBuilder sb = new StringBuilder();
         sb.append("INSERT INTO TB_PRODUTO (ID, NOME, CODIGO, VALOR, FORNECEDOR)");
-        sb.append("VALUES (NEXTVAL('SQ_CLIENTE'),?,?,?,?)");
+        sb.append("VALUES (NEXTVAL('SQ_CLIENTE'),?,?,?,?);");
         return sb.toString();
     }
 
@@ -85,7 +85,7 @@ public abstract class GenericDAO <T extends Persistente> implements IGenericDAO<
         StringBuilder sb = new StringBuilder();
         sb.append("UPDATE TB_PRODUTO");
         sb.append("SET NOME =?, CODIGO=?,VALOR=?, FORNECEDOR=?");
-        sb.append("WHERE ID=?");
+        sb.append("WHERE ID=?;");
         return sb.toString();
     }
 
@@ -213,7 +213,7 @@ public abstract class GenericDAO <T extends Persistente> implements IGenericDAO<
     private String getSqlDeleteProduto() {
         StringBuilder sb = new StringBuilder();
         sb.append("DELETE * FROM TB_PRODUTO");
-        sb.append("WHERE CODIGO = ?");
+        sb.append("WHERE CODIGO = ?;");
         return sb.toString();
     }
 
@@ -224,7 +224,7 @@ public abstract class GenericDAO <T extends Persistente> implements IGenericDAO<
     private String getSqlDeleteCliente() {
         StringBuilder sb = new StringBuilder();
         sb.append("DELETE * FROM TB_CLIENTE");
-        sb.append("WHERE CODIGO = ?");
+        sb.append("WHERE CODIGO = ?;");
         return sb.toString();
     }
 
@@ -236,20 +236,20 @@ public abstract class GenericDAO <T extends Persistente> implements IGenericDAO<
     private String getSqlInsertCliente() {
         StringBuilder sb = new StringBuilder();
         sb.append("INSERT INTO TB_CLIENTE (ID, NOME, CODIGO)");
-        sb.append("VALUES (NEXTVAL('SQ_CLIENTE'),?,?)");
+        sb.append("VALUES (NEXTVAL('SQ_CLIENTE'),?,?);");
         return sb.toString();
     }
 
     private String getSqlSelectAll(String tableName) {
         StringBuilder sb = new StringBuilder();
-        sb.append("SELECT * FROM " + tableName);
+        sb.append("SELECT * FROM " + tableName + ";");
         return sb.toString();
     }
 
 
     private String getSqlSelect(String tableName) {
         StringBuilder sb = new StringBuilder();
-        sb.append("SELECT * FROM " + tableName + "WHERE CODIGO =?");
+        sb.append("SELECT * FROM " + tableName + "WHERE CODIGO =?;");
         return sb.toString();
     }
 
@@ -261,7 +261,7 @@ public abstract class GenericDAO <T extends Persistente> implements IGenericDAO<
         StringBuilder sb = new StringBuilder();
         sb.append("UPDATE TB_CLIENTE ");
         sb.append("SET NOME =?, CODIGO=?");
-        sb.append("WHERE ID=?");
+        sb.append("WHERE ID=?;");
         return sb.toString();
     }
 
