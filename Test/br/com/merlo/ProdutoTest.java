@@ -1,12 +1,9 @@
 package br.com.merlo;
 
-import br.com.merlo.dao.ClienteDAO;
-import br.com.merlo.dao.IClienteDAO;
 import br.com.merlo.dao.IProdutoDAO;
 import br.com.merlo.dao.ProdutoDAO;
 import br.com.merlo.dao.generic.GenericDAO;
 import br.com.merlo.dao.generic.IGenericDAO;
-import br.com.merlo.domain.Cliente;
 import br.com.merlo.domain.Produto;
 import org.junit.Test;
 
@@ -99,10 +96,10 @@ public class ProdutoTest {
         assertTrue(countCad==1);
 
         Produto produto1 = new Produto();
-        produto.setCodigo("11");
-        produto.setNome("Merlo");
-        produto.setValor(1200d);
-        produto.setFornecedor("Marcos");
+        produto1.setCodigo("11");
+        produto1.setNome("Merlo");
+        produto1.setValor(1200d);
+        produto1.setFornecedor("Marcos");
         Integer countCad2 = produtoDAO.cadastar(produto1);
         assertTrue(countCad2==1);
 
@@ -147,12 +144,13 @@ public class ProdutoTest {
 
         Produto produtoBD1 = produtoDAO.buscar("10","TB_PRODUTO");
         assertNull(produtoBD1);
-
         Produto produtoBD2 = produtoDAO.buscar("20","TB_PRODUTO");
         assertNotNull(produtoBD2);
-        assertEquals(produtoBD.getId(),produtoBD2.getId());
-        assertEquals(produtoBD.getNome(),produtoBD2.getNome());
         assertEquals(produtoBD.getCodigo(),produtoBD2.getCodigo());
+        assertEquals(produtoBD.getNome(),produtoBD2.getNome());
+        assertEquals(produtoBD.getValor(),produtoBD2.getValor());
+        assertEquals(produtoBD.getFornecedor(),produtoBD2.getFornecedor());
+
 
         List<Produto> list = produtoDAO.buscarTodos("TB_PRODUTO");
         for (Produto prd : list){

@@ -111,7 +111,7 @@ public class ClientTest {
 
         Cliente cliente = new Cliente();
         cliente.setCodigo("10");
-        cliente.setNome("matheus");
+        cliente.setNome("Matheus");
         Integer countCad = clienteDAO.cadastar(cliente);
         assertTrue(countCad == 1);
 

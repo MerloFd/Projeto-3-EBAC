@@ -32,5 +32,12 @@ public class Cliente implements Persistente {
         this.nome = nome;
     }
 
-
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", codigo='" + codigo + '\'' +
+                ", nome='" + nome + '\'' +
+                '}';
+    }
 }
