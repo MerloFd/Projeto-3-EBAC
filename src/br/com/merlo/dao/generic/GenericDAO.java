@@ -84,7 +84,7 @@ public abstract class GenericDAO <T extends Persistente> implements IGenericDAO<
     private String getSqlUpdateProduto() {
         StringBuilder sb = new StringBuilder();
         sb.append("UPDATE TB_PRODUTO ");
-        sb.append("SET NOME =?, CODIGO=?,VALOR=?, FORNECEDOR=? ");
+        sb.append("SET NOME =?, CODIGO=?, VALOR=?, FORNECEDOR=? ");
         sb.append("WHERE ID=? ;");
         return sb.toString();
     }
@@ -168,7 +168,7 @@ public abstract class GenericDAO <T extends Persistente> implements IGenericDAO<
     }
 
     @Override
-    public Integer excluir(Persistente entity) throws Exception {
+    public Integer excluir(T entity) throws Exception {
         Connection connection = null;
         PreparedStatement stm = null;
         try {

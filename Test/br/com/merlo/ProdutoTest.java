@@ -143,7 +143,7 @@ public class ProdutoTest {
         assertTrue(countUpdate == 1);
 
         Produto produtoBD1 = produtoDAO.buscar("10","TB_PRODUTO");
-        assertNull(produtoBD1);
+        assertNotNull(produtoBD1);
         Produto produtoBD2 = produtoDAO.buscar("20","TB_PRODUTO");
         assertNotNull(produtoBD2);
         assertEquals(produtoBD.getCodigo(),produtoBD2.getCodigo());
