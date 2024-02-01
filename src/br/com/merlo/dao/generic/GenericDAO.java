@@ -168,7 +168,7 @@ public abstract class GenericDAO <T extends Persistente> implements IGenericDAO<
     }
 
     @Override
-    public Integer excluir(T entity) throws Exception {
+    public Integer excluir(Persistente entity) throws Exception {
         Connection connection = null;
         PreparedStatement stm = null;
         try {
