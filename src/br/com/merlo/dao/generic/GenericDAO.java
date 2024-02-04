@@ -143,21 +143,39 @@ public abstract class GenericDAO <T extends Persistente> implements IGenericDAO<
         List<T> list = new ArrayList<>();
         ResultSet rs = null;
         Cliente cliente = null;
+        Produto produto = null;
         try {
             connection = ConnectionFactory.getConnection();
             String sql = getSqlSelectAll(tableName);
             stm=connection.prepareStatement(sql);
             rs = stm.executeQuery();
-
-            while (rs.next()){ //loop para pegar todos os results da list
-                cliente = new Cliente();
-                Long id = rs.getLong("ID");
-                String nome = rs.getString("NOME");
-                String cod = rs.getString("CODIGO");
-                cliente.setId(id);
-                cliente.setNome(nome);
-                cliente.setCodigo(cod);
-                list.add((T) cliente);
+            if (tableName.equalsIgnoreCase("TB_CLIENTE")){
+                while (rs.next()) { //loop para pegar todos os results da list
+                    cliente = new Cliente();
+                    Long id = rs.getLong("ID");
+                    String nome = rs.getString("NOME");
+                    String cod = rs.getString("CODIGO");
+                    cliente.setId(id);
+                    cliente.setNome(nome);
+                    cliente.setCodigo(cod);
+                    list.add((T) cliente);
+                }
+            } else if (tableName.equalsIgnoreCase("TB_PRODUTO"))
+            {
+                while (rs.next()){ //loop para pegar todos os results da list
+                    produto = new Produto();
+                    Long id = rs.getLong("ID");
+                    String nome = rs.getString("NOME");
+                    String cod = rs.getString("CODIGO");
+                    Double valor = rs.getDouble("VALOR");
+                    String fornecedor = rs.getString("FORNECEDOR");
+                    produto.setId(id);
+                    produto.setNome(nome);
+                    produto.setCodigo(cod);
+                    produto.setValor(valor);
+                    produto.setFornecedor(fornecedor);
+                    list.add((T) produto);
+                }
             }
         } catch (Exception e){
             throw e;
